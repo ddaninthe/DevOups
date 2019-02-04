@@ -687,11 +687,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\Diego\\Documents\\ESGI\\S1\\CleanCode\\Exam\\AppConsole\\AppConsole.csproj",
+      "projectUniqueName": "D:\\Diego\\Documents\\ESGI\\S1\\IntegrationContinue\\projet\\AppConsole\\AppConsole.csproj",
       "projectName": "AppConsole",
-      "projectPath": "d:\\Diego\\Documents\\ESGI\\S1\\CleanCode\\Exam\\AppConsole\\AppConsole.csproj",
+      "projectPath": "D:\\Diego\\Documents\\ESGI\\S1\\IntegrationContinue\\projet\\AppConsole\\AppConsole.csproj",
       "packagesPath": "C:\\Users\\Diego\\.nuget\\packages\\",
-      "outputPath": "d:\\Diego\\Documents\\ESGI\\S1\\CleanCode\\Exam\\AppConsole\\obj\\",
+      "outputPath": "D:\\Diego\\Documents\\ESGI\\S1\\IntegrationContinue\\projet\\AppConsole\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
