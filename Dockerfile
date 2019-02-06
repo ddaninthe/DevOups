@@ -1,6 +1,7 @@
 FROM debian:latest
 
 RUN apt-get update
+RUN apt-get upgrade
 RUN apt-get install -y wget
 RUN apt-get install -y gnupg2
 
