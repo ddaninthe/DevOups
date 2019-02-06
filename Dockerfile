@@ -3,7 +3,7 @@ FROM debian:latest
 RUN apt-get update
 RUN apt-get install -y wget
 
-// Register Microsoft
+# Register Microsoft
 RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg
 RUN sudo mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/
 RUN wget -q https://packages.microsoft.com/config/debian/9/prod.list
