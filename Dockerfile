@@ -20,4 +20,4 @@ RUN mkdir /docker
 COPY ./romans/ /docker/
 
 RUN dotnet build /docker/Romans.csproj
-RUN dotnet test /docker/bin/Debug/netcoreapp2.1/Romans.dll
+RUN dotnet test
