@@ -29,20 +29,23 @@ steps:
     testResultsFiles: '**/*.trx'
   displayName: 'Publish test results'
   
-- script: dotnet tool install --global coverlet.console
-  displayName: 'Installing Coverlet'
+- script:
+    dotnet tool install --global coverlet.console  
+    dotnet add romans/TestsExam package coverlet.msbuild
+  displayName: 'Setup Coverlet'
   
-- script: dotnet add romans/TestsExam package coverlet.msbuild
-  displayName: 'Adding coverlet package to Test project'
+- script: dotnet tool install --global dotnet-reportgenerator-globaltool --tool-path. --version 4.0.12
   
-- script: dotnet test romans/TestsExam /p:CollectCoverage=true /p:CoverletOutputFormat='cobertura' /p:CoverletOutput='$(System.DefaultWorkingDirectory)/coverage.cobertura.xml'
+- script:
+    dotnet test romans/TestsExam /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/Coverage/
+    .\reportgenerator "-reports:$(Build.SourcesDirectory)/Coverage/coverage.cobertura.xml" "-targetdir:results" "-reporttypes:HTMLInline;HTMLChart"
   displayName: 'Output code review'
 
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: cobertura
-    summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage.cobertura.xml'
-    reportDirectory: $(System.DefaultWorkingDirectory)/Romans/**/site/cobertura
+    summaryFileLocation: $(Build.SourcesDirectory)/Coverage/coverage.cobertura.xml
+    reportDirectory: $(Build.SourcesDirectory)/Coverage
   displayName: 'Publish code coverage'
   
 - script: docker build -f Dockerfile -t $(imageName) .
