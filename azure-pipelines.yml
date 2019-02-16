@@ -35,13 +35,14 @@ steps:
 - script: dotnet add romans/TestsExam package coverlet.msbuild
   displayName: 'Add Coverlet package to Test project'
   
-- script: dotnet tool install --global dotnet-reportgenerator-globaltool --tool-path . --version 4.0.12
+- script: dotnet tool install dotnet-reportgenerator-globaltool --tool-path .
   displayName: 'Install dotnet reportgenerator' 
  
-- script:
-    dotnet test romans/TestsExam /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/Coverage/
-    .\reportgenerator "-reports:$(Build.SourcesDirectory)/Coverage/coverage.cobertura.xml" "-targetdir:results" "-reporttypes:HTMLInline;HTMLChart"
-  displayName: 'Output code review'
+- script: dotnet test romans/TestsExam /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/Coverage/
+  displayName: 'Run Coverlet'
+
+- script: ./reportgenerator "-reports:$(Build.SourcesDirectory)/Coverage/coverage.cobertura.xml" "-targetdir:results" "-reporttypes:HTMLInline;HTMLChart"
+  displayName: 'Report Generator'
 
 - task: PublishCodeCoverageResults@1
   inputs:
