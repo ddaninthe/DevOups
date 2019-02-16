@@ -24,6 +24,5 @@ steps:
     testRunner: VSTest
     testResultsFiles: '**/*.trx'
   displayName: 'publish Tests'
-- task: PublishBuildArtifacts@1
 - script: docker build -f Dockerfile -t $(imageName) .
   displayName: 'docker build'
