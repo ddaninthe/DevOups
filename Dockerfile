@@ -19,5 +19,6 @@ RUN apt-get install -y dotnet-sdk-2.1
 RUN mkdir /docker
 COPY ./romans/ /docker/
 
-RUN dotnet build /docker/Romans.csproj
-RUN dotnet test /docker/
+RUN dotnet build /docker/
+RUN dotnet test /docker/TestsExam
+RUN dotnet run --project /docker/AppConsole 2019
