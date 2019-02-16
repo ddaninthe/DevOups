@@ -18,16 +18,16 @@ steps:
     command: test
     projects: 'romans/TestsExam/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
-  displayName: 'Running tests'
+  displayName: 'Run tests'
  
 - script: dotnet test romans/TestsExam --logger trx --collect "Code coverage"
-  displayName: 'Get tests results'
+  displayName: 'Get test results'
   
 - task: PublishTestResults@2
   inputs:
     testRunner: VSTest
     testResultsFiles: '**/*.trx'
-  displayName: 'Publish tests results'
+  displayName: 'Publish test results'
   
 - script: dotnet tool install --global coverlet.console
   displayName: 'Installing Coverlet'
@@ -35,14 +35,14 @@ steps:
 - script: dotnet add romans/TestsExam package coverlet.msbuild
   displayName: 'Adding coverlet package to Test project'
   
-- script: dotnet test romans/TestsExam /p:CollectCoverage=true /p:CoverletOutputFormat='cobertura' /p:CoverletOutput='/coverage.cobertura.xml'
+- script: dotnet test romans/TestsExam /p:CollectCoverage=true /p:CoverletOutputFormat='cobertura' /p:CoverletOutput='romans/coverage.cobertura.xml'
   displayName: 'Output code review'
 
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: cobertura
-    summaryFileLocation: '/coverage.cobertura.xml'
+    summaryFileLocation: 'romans/coverage.cobertura.xml'
   displayName: 'Publish code coverage'
   
 - script: docker build -f Dockerfile -t $(imageName) .
-  displayName: 'Docker build'
+  displayName: 'Build Dockerfile'
