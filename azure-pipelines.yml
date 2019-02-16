@@ -19,12 +19,21 @@ steps:
     projects: 'romans/TestsExam/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
   displayName: 'running tests'
+  
 - script: dotnet test romans/TestsExam --logger trx --collect "Code coverage"
   displayName: 'get tests results'
+  
 - task: PublishTestResults@2
   inputs:
     testRunner: VSTest
     testResultsFiles: '**/*.trx'
   displayName: 'publish tests results'
+  
 - script: docker build -f Dockerfile -t $(imageName) .
   displayName: 'docker build'
+  
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: build
+  displayName: 'publish build artifact'
