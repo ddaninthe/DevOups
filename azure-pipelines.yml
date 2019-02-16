@@ -42,6 +42,7 @@ steps:
   inputs:
     codeCoverageTool: cobertura
     summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage.cobertura.xml'
+    reportDirectory: $(System.DefaultWorkingDirectory)/Romans/**/site/cobertura
   displayName: 'Publish code coverage'
   
 - script: docker build -f Dockerfile -t $(imageName) .
