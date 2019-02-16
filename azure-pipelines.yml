@@ -32,10 +32,10 @@ steps:
 - script: dotnet tool install --global coverlet.console
   displayName: 'Installing Coverlet'
   
-- script: dotnet add TestsExam package coverlet.msbuild
+- script: dotnet add romans/TestsExam package coverlet.msbuild
   displayName: 'Adding coverlet package to Test project'
   
-- script: dotnet test TestsExam /p:CollectCoverage=true /p:CoverletOutputFormat='cobertura' /p:CoverletOutput='/coverage.cobertura.xml'
+- script: dotnet test romans/TestsExam /p:CollectCoverage=true /p:CoverletOutputFormat='cobertura' /p:CoverletOutput='/coverage.cobertura.xml'
   displayName: 'Output code review'
 
 - task: PublishCodeCoverageResults@1
