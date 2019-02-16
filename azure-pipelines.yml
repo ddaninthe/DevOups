@@ -7,11 +7,25 @@ trigger:
 - master
 
 pool:
-  vmImage: 'vs2017-win2016'
+  vmImage: 'Ubuntu-16.04'
 
 variables:
   imageName: 'docker-container:$(build.buildId)'
 
 steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    command: test
+    projects: 'romans/TestsExam/*.csproj'
+    arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
+- script: dotnet test romans/TestsExam --logger trx --collect "Code coverage"
+- task: PublishTestResults@2
+  inputs:
+    testRunner: VSTest
+    testResultsFiles: '**/*.trx'
+  displayName: 'publish Tests'
+- script: docker publish --output $(Build.ArtifactStagingDirectory)
+- task: PublishBuildArtifacts@1
+  displayName: 'docker publish'
 - script: docker build -f Dockerfile -t $(imageName) .
   displayName: 'docker build'

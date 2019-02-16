@@ -20,5 +20,4 @@ RUN mkdir /docker
 COPY ./romans/ /docker/
 
 RUN dotnet build /docker/
-RUN dotnet test /docker/TestsExam
 RUN dotnet run --project /docker/AppConsole 2019
