@@ -35,13 +35,13 @@ steps:
 - script: dotnet add romans/TestsExam package coverlet.msbuild
   displayName: 'Adding coverlet package to Test project'
   
-- script: dotnet test romans/TestsExam /p:CollectCoverage=true /p:CoverletOutputFormat='cobertura' /p:CoverletOutput='romans/coverage.cobertura.xml'
+- script: dotnet test romans/TestsExam /p:CollectCoverage=true /p:CoverletOutputFormat='cobertura' /p:CoverletOutput='$(System.DefaultWorkingDirectory)'
   displayName: 'Output code review'
 
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: cobertura
-    summaryFileLocation: 'romans/coverage.cobertura.xml'
+    summaryFileLocation: '**/coverage.cobertura.xml'
   displayName: 'Publish code coverage'
   
 - script: docker build -f Dockerfile -t $(imageName) .
