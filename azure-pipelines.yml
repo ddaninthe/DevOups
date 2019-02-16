@@ -26,6 +26,5 @@ steps:
   displayName: 'publish Tests'
 - script: docker publish --output $(Build.ArtifactStagingDirectory)
 - task: PublishBuildArtifacts@1
-  displayName: 'docker publish'
 - script: docker build -f Dockerfile -t $(imageName) .
   displayName: 'docker build'
