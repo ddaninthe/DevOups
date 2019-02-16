@@ -29,10 +29,11 @@ steps:
     testResultsFiles: '**/*.trx'
   displayName: 'Publish test results'
   
-- script:
-    dotnet tool install --global coverlet.console  
-    dotnet add romans/TestsExam package coverlet.msbuild
-  displayName: 'Setup Coverlet'
+- script: dotnet tool install --global coverlet.console
+  displayName: 'Install Coverlet'
+  
+- script: dotnet add romans/TestsExam package coverlet.msbuild
+  displayName: 'Add Coverlet package to Test project'
   
 - script: dotnet tool install --global dotnet-reportgenerator-globaltool --tool-path. --version 4.0.12
   
