@@ -17,12 +17,14 @@ steps:
   inputs:
     command: test
     projects: 'romans/TestsExam/*.csproj'
-    arguments: '--configuration $(buildConfiguration) --logger trx --collect "Code coverage"'
+    arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
   displayName: 'dotnet Testing'
+- script: dotnet test romans/TestsExam --logger trx --collect "Code coverage"
+  displayName: 'publish Tests'
 - task: PublishTestResults@2
   inputs:
     testRunner: VSTest
     testResultsFiles: '**/*.trx'
-  displayName: 'publish Tests'
+  displayName: 'Displaying test results'
 - script: docker build -f Dockerfile -t $(imageName) .
   displayName: 'docker build'
