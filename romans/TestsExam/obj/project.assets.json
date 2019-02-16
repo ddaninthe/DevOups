@@ -1681,6 +1681,19 @@
         "build": {
           "build/netcoreapp1.0/xunit.runner.visualstudio.props": {}
         }
+      },
+      "AppConsole/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "Microsoft.NETCore.App": "2.1.0"
+        },
+        "compile": {
+          "bin/placeholder/AppConsole.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AppConsole.dll": {}
+        }
       }
     }
   },
@@ -5756,10 +5769,16 @@
         "xunit.runner.visualstudio.2.3.1.nupkg.sha512",
         "xunit.runner.visualstudio.nuspec"
       ]
+    },
+    "AppConsole/1.0.0": {
+      "type": "project",
+      "path": "../AppConsole/AppConsole.csproj",
+      "msbuildProject": "../AppConsole/AppConsole.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "AppConsole >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 15.8.0",
       "Microsoft.NETCore.App >= 2.1.0",
       "xunit >= 2.3.1",
@@ -5793,7 +5812,11 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Diego\\Documents\\ESGI\\S1\\IntegrationContinue\\projet\\romans\\AppConsole\\AppConsole.csproj": {
+              "projectPath": "D:\\Diego\\Documents\\ESGI\\S1\\IntegrationContinue\\projet\\romans\\AppConsole\\AppConsole.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -43,3 +43,6 @@ D:\Diego\Documents\ESGI\S1\IntegrationContinue\projet\romans\TestsExam\obj\Debug
 D:\Diego\Documents\ESGI\S1\IntegrationContinue\projet\romans\TestsExam\obj\Debug\netcoreapp2.1\TestsExam.AssemblyInfo.cs
 D:\Diego\Documents\ESGI\S1\IntegrationContinue\projet\romans\TestsExam\obj\Debug\netcoreapp2.1\TestsExam.dll
 D:\Diego\Documents\ESGI\S1\IntegrationContinue\projet\romans\TestsExam\obj\Debug\netcoreapp2.1\TestsExam.pdb
+D:\Diego\Documents\ESGI\S1\IntegrationContinue\projet\romans\TestsExam\bin\Debug\netcoreapp2.1\AppConsole.dll
+D:\Diego\Documents\ESGI\S1\IntegrationContinue\projet\romans\TestsExam\bin\Debug\netcoreapp2.1\AppConsole.pdb
+D:\Diego\Documents\ESGI\S1\IntegrationContinue\projet\romans\TestsExam\obj\Debug\netcoreapp2.1\TestsExam.csproj.CopyComplete
