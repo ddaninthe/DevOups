@@ -38,7 +38,7 @@ steps:
 - script: dotnet tool install dotnet-reportgenerator-globaltool --tool-path .
   displayName: 'Install reportgenerator' 
  
-- script: dotnet test romans/TestsExam/UnitTest1.cs /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/Coverage/ /p:Threshold=80
+- script: dotnet test romans/TestsExam /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/Coverage/ /p:Threshold=80 /p:Exclude=[xunit.*]*
   displayName: 'Run Coverlet'
 
 - script: ./reportgenerator "-reports:$(Build.SourcesDirectory)/Coverage/coverage.cobertura.xml" "-targetdir:$(Build.SourcesDirectory)/Coverage" "-reporttypes:HtmlInline_AzurePipelines;HTMLChart" "-filters:+AppConsole*;-Xunit*"
