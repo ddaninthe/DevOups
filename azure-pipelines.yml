@@ -41,7 +41,7 @@ steps:
 - script: dotnet test romans/TestsExam /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/Coverage/
   displayName: 'Run Coverlet'
 
-- script: ./reportgenerator "-reports:$(Build.SourcesDirectory)/Coverage/coverage.cobertura.xml" "-targetdir:$(Build.SourcesDirectory)/Coverage" -reporttype:Html;HtmlSummary
+- script: ./reportgenerator "-reports:$(Build.SourcesDirectory)/Coverage/coverage.cobertura.xml" "-targetdir:$(Build.SourcesDirectory)/Coverage" "-reporttype:Html;HtmlSummary"
   displayName: 'Report Generator'
 
 - task: PublishCodeCoverageResults@1
