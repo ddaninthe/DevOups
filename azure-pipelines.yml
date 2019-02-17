@@ -36,12 +36,12 @@ steps:
   displayName: 'Add Coverlet package to Test project'
   
 - script: dotnet tool install dotnet-reportgenerator-globaltool --tool-path .
-  displayName: 'Install dotnet reportgenerator' 
+  displayName: 'Install reportgenerator' 
  
 - script: dotnet test romans/TestsExam /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/Coverage/
   displayName: 'Run Coverlet'
 
-- script: ./reportgenerator "-reports:$(Build.SourcesDirectory)/Coverage/coverage.cobertura.xml" "-targetdir:results" "-reporttypes:HTMLInline;HTMLChart"
+- script: ./reportgenerator "-reports:$(Build.SourcesDirectory)/Coverage/coverage.cobertura.xml" "-targetdir:$(Build.SourcesDirectory)/Coverage"
   displayName: 'Report Generator'
 
 - task: PublishCodeCoverageResults@1
