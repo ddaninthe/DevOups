@@ -41,7 +41,7 @@ steps:
 - script: dotnet test romans/TestsExam /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/Coverage/
   displayName: 'Run Coverlet'
 
-- script: ./reportgenerator "-reports:$(Build.SourcesDirectory)/Coverage/coverage.cobertura.xml" "-targetdir:$(Build.SourcesDirectory)/Coverage" "-reporttypes:HTMLInline;HTMLChart" 
+- script: ./reportgenerator "-reports:$(Build.SourcesDirectory)/Coverage/coverage.cobertura.xml" "-targetdir:$(Build.SourcesDirectory)/Coverage" "-reporttypes:HtmlInline_AzurePipelines_Dark;HTMLChart" "-classfilters:-Excluded *;+Include AppConsole.ArabToRomanConverter"
   displayName: 'Report Generator'
 
 - task: PublishCodeCoverageResults@1
